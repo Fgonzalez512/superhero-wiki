@@ -43,11 +43,15 @@ export default function Home({ data }: any) {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await getRandomCharacters() as { data: never[] };
-      setResults(data);
+    async function fetchData() {
+      const { data, error } = await getRandomCharacters() as { data: never[] };
+      if (error) {
+        console.error(error);
+      } else {
+        setResults(data);
+      }
       setLoading(false);
-    };
+    }
     fetchData();
   }, []);
 
