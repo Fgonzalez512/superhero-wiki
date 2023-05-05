@@ -118,7 +118,7 @@ export default function Home({ data }: any) {
     <>
       <Head>
         <title>Superhero Wiki</title>
-        <meta name="description" content="Search for your favorite comic book characters" />
+        <meta name="description" content="Search for your favorite comic characters" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/superhero_logo.png" />
       </Head>
