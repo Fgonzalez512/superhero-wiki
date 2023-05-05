@@ -58,6 +58,7 @@ export default function Home({ data }: any) {
       setResults(data.results);
     }
     setSelectedCharacter(null);
+    setQuery('');
   }
 
 
@@ -110,7 +111,11 @@ export default function Home({ data }: any) {
           <ul className={styles.grid}>
             {results && results.map((result: any) => (
               <li key={result.id} className={styles.card} onClick={() => selectCharacter(result)}>
-                {result.image && result.image.url && <img src={result.image.url} alt={result.name} />}
+                {result.image && result.image.url ? (
+                  <img src={result.image.url} alt={result.name} />
+                ) : (
+                  <img src="/superhero_logo.png" alt="character picture" />
+                )}
                 <h3>{result.name}</h3>
               </li>
             ))}
@@ -120,71 +125,80 @@ export default function Home({ data }: any) {
         {selectedCharacter && (
           <>
             <div className={styles.bio}>
-              {selectedCharacter.image && selectedCharacter.image.url && (
+              {(selectedCharacter.image && selectedCharacter.image.url) ? (
                 <img src={selectedCharacter.image.url} alt={selectedCharacter.name} />
+              ) : (
+                <img src="/superhero_logo.png" alt="character picture" />
               )}
               <h3>Biography</h3>
               <table>
-                <tr>
-                  <td>Name:</td>
-                  <td>{selectedCharacter.biography['full-name']}</td>
-                </tr>
-                <tr>
-                  <td>Aliases:</td>
-                  <td>{selectedCharacter.biography.aliases.join(', ')}</td>
-                </tr>
-                <tr>
-                  <td>Place of Birth:</td>
-                  <td>{selectedCharacter.biography['place-of-birth']}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{selectedCharacter.biography['full-name'] ? selectedCharacter.biography['full-name'] : ''}</td>
+                  </tr>
+                  <tr>
+                    <td>Aliases:</td>
+                    <td>{selectedCharacter.biography.aliases ? selectedCharacter.biography.aliases.join(', ') : ''}</td>
+                  </tr>
+                  <tr>
+                    <td>Place of Birth:</td>
+                    <td>{selectedCharacter.biography['place-of-birth'] ? selectedCharacter.biography['place-of-birth'] : ''}</td>
+                  </tr>
+                </tbody>
               </table>
               <h3>Appearance</h3>
               <table>
-                <tr>
-                  <td>Gender:</td>
-                  <td>{selectedCharacter.appearance.gender}</td>
-                </tr>
-                <tr>
-                  <td>Race:</td>
-                  <td>{selectedCharacter.appearance.race}</td>
-                </tr>
-                <tr>
-                  <td>Height:</td>
-                  <td>{selectedCharacter.appearance.height[1]}</td>
-                </tr>
-                <tr>
-                  <td>Weight:</td>
-                  <td>{selectedCharacter.appearance.weight[1]}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Gender:</td>
+                    <td>{selectedCharacter.appearance.gender ? selectedCharacter.appearance.gender : ''}</td>
+                  </tr>
+                  <tr>
+                    <td>Race:</td>
+                    <td>{selectedCharacter.appearance.race ? selectedCharacter.appearance.race : ''}</td>
+                  </tr>
+                  <tr>
+                    <td>Height:</td>
+                    <td>{selectedCharacter.appearance.height[1] ? selectedCharacter.appearance.height[1] : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Weight:</td>
+                    <td>{selectedCharacter.appearance.weight[1] ? selectedCharacter.appearance.weight[1] : 0}</td>
+                  </tr>
+                </tbody>
               </table>
               <h3>Powerstats</h3>
               <table>
-                <tr>
-                  <td>Intelligence:</td>
-                  <td>{selectedCharacter.powerstats.intelligence}</td>
-                </tr>
-                <tr>
-                  <td>Strength:</td>
-                  <td>{selectedCharacter.powerstats.strength}</td>
-                </tr>
-                <tr>
-                  <td>Speed:</td>
-                  <td>{selectedCharacter.powerstats.speed}</td>
-                </tr>
-                <tr>
-                  <td>Durability:</td>
-                  <td>{selectedCharacter.powerstats.durability}</td>
-                </tr>
-                <tr>
-                  <td>Power:</td>
-                  <td>{selectedCharacter.powerstats.power}</td>
-                </tr>
-                <tr>
-                  <td>Combat:</td>
-                  <td>{selectedCharacter.powerstats.combat}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Intelligence:</td>
+                    <td>{selectedCharacter.powerstats.intelligence ? selectedCharacter.powerstats.intelligence : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Strength:</td>
+                    <td>{selectedCharacter.powerstats.strength ? selectedCharacter.powerstats.strength : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Speed:</td>
+                    <td>{selectedCharacter.powerstats.speed ? selectedCharacter.powerstats.speed : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Durability:</td>
+                    <td>{selectedCharacter.powerstats.durability ? selectedCharacter.powerstats.durability : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Power:</td>
+                    <td>{selectedCharacter.powerstats.power ? selectedCharacter.powerstats.power : 0}</td>
+                  </tr>
+                  <tr>
+                    <td>Combat:</td>
+                    <td>{selectedCharacter.powerstats.combat ? selectedCharacter.powerstats.combat : 0}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
+
             <button className={styles.title} onClick={clearSelection}>Back</button>
           </>
         )}
