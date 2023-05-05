@@ -37,9 +37,10 @@ interface Character {
 
 export default function Home({ data }: any) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<Character[]>([]);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [loading, setLoading] = useState(true);
+  const [results, setResults] = useState<Character[]>([]);
+  const [tooManyRequests, setTooManyRequests] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,8 +57,12 @@ export default function Home({ data }: any) {
     const data = await response.json();
     if (data.response === "error") {
       setResults([]);
+      if (data.error === "limit") {
+        setTooManyRequests(true);
+      }
     } else {
       setResults(data.results);
+      setTooManyRequests(false);
     }
     setSelectedCharacter(null);
     setQuery('');
@@ -87,7 +92,22 @@ export default function Home({ data }: any) {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loading}>
+        <div className={styles.loadingText}>Loading...</div>
+      </div>
+    );
+  }
+
+  if (tooManyRequests) {
+    return (
+      <div className={styles.title}>
+        <h1>Superhero Wiki</h1>
+        <div>
+          <p>Too many requests. Please try again later.</p>
+        </div>
+      </div>
+    );
   }
 
   return (

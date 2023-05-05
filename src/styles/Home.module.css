@@ -8,6 +8,19 @@
   justify-content: space-evenly;
 }
 
+.loading {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  font-size: 2rem;
+  color: #333333;
+  font-weight: bold;
+}
+
 .title h1 {
   font-size: 4rem;
   text-align: center;
