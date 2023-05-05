@@ -165,37 +165,36 @@ export default function Home({ data }: any) {
                 <tbody>
                   <tr>
                     <td>Name:</td>
-                    <td>{selectedCharacter?.biography?.['full-name'] ?? ''}</td>
+                    <td>{selectedCharacter && selectedCharacter.biography ? selectedCharacter.biography['full-name'] : ''}</td>
                   </tr>
                   <tr>
                     <td>Aliases:</td>
-                    <td>{selectedCharacter?.biography?.aliases?.join(', ') ?? ''}</td>
+                    <td>{selectedCharacter && selectedCharacter.biography ? selectedCharacter.biography.aliases.join(', ') : ''}</td>
                   </tr>
                   <tr>
                     <td>Place of Birth:</td>
-                    <td>{selectedCharacter?.biography?.['place-of-birth'] ?? ''}</td>
+                    <td>{selectedCharacter && selectedCharacter.biography ? selectedCharacter.biography['place-of-birth'] : ''}</td>
                   </tr>
                 </tbody>
               </table>
-
               <h3>Appearance</h3>
               <table>
                 <tbody>
                   <tr>
                     <td>Gender:</td>
-                    <td>{selectedCharacter?.appearance?.gender ?? ''}</td>
+                    <td>{selectedCharacter && selectedCharacter.appearance ? selectedCharacter.appearance.gender : ''}</td>
                   </tr>
                   <tr>
                     <td>Race:</td>
-                    <td>{selectedCharacter?.appearance?.race ?? ''}</td>
+                    <td>{selectedCharacter && selectedCharacter.appearance ? selectedCharacter.appearance.race : ''}</td>
                   </tr>
                   <tr>
                     <td>Height:</td>
-                    <td>{selectedCharacter?.appearance?.height[1] ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.appearance ? selectedCharacter.appearance.height[1] : 0}</td>
                   </tr>
                   <tr>
                     <td>Weight:</td>
-                    <td>{selectedCharacter?.appearance?.weight[1] ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.appearance ? selectedCharacter.appearance.weight[1] : 0}</td>
                   </tr>
                 </tbody>
               </table>
@@ -204,27 +203,27 @@ export default function Home({ data }: any) {
                 <tbody>
                   <tr>
                     <td>Intelligence:</td>
-                    <td>{selectedCharacter?.powerstats?.intelligence ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.intelligence : 0}</td>
                   </tr>
                   <tr>
                     <td>Strength:</td>
-                    <td>{selectedCharacter?.powerstats?.strength ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.strength : 0}</td>
                   </tr>
                   <tr>
                     <td>Speed:</td>
-                    <td>{selectedCharacter?.powerstats?.speed ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.speed : 0}</td>
                   </tr>
                   <tr>
                     <td>Durability:</td>
-                    <td>{selectedCharacter?.powerstats?.durability ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.durability : 0}</td>
                   </tr>
                   <tr>
                     <td>Power:</td>
-                    <td>{selectedCharacter?.powerstats?.power ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.power : 0}</td>
                   </tr>
                   <tr>
                     <td>Combat:</td>
-                    <td>{selectedCharacter?.powerstats?.combat ?? 0}</td>
+                    <td>{selectedCharacter && selectedCharacter.powerstats ? selectedCharacter.powerstats.combat : 0}</td>
                   </tr>
                 </tbody>
               </table>
