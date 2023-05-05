@@ -44,7 +44,7 @@ export default function Home({ data }: any) {
 
   useEffect(() => {
     async function fetchData() {
-      const { data, error } = await getRandomCharacters() as { data: never[] };
+      const { data, error } = await getRandomCharacters();
       if (error) {
         console.error(error);
       } else {
