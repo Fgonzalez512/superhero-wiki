@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { getRandomCharacter, getRandomCharacters } from './api/superhero-api';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const CORS = 'https://cors-anywhere.herokuapp.com/';
 const SUPERHERO_API = `https://superheroapi.com/api/${API_KEY}`;
 
 interface Character {
@@ -51,7 +52,7 @@ export default function Home({ data }: any) {
 
   async function submitSearch(event: any) {
     event.preventDefault();
-    const response = await fetch(`${SUPERHERO_API}/search/${query}`);
+    const response = await fetch(`${CORS}${SUPERHERO_API}/search/${query}`);
     const data = await response.json();
     if (data.response === "error") {
       setResults([]);

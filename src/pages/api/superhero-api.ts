@@ -1,4 +1,5 @@
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const CORS = 'https://cors-anywhere.herokuapp.com/';
 const SUPERHERO_API = `https://superheroapi.com/api/${API_KEY}`;
 
 export async function getRandomCharacters() {
@@ -8,7 +9,7 @@ export async function getRandomCharacters() {
     );
     const data = await Promise.all(
       randomIdArray.map(async (id) => {
-        const response = await fetch(`${SUPERHERO_API}/${id}`);
+        const response = await fetch(`${CORS}${SUPERHERO_API}/${id}`);
         return response.json();
       })
     );
@@ -22,7 +23,7 @@ export async function getRandomCharacters() {
 export async function getRandomCharacter() {
   try {
     const randomId = Math.floor(Math.random() * 731) + 1;
-    const response = await fetch(`${SUPERHERO_API}/${randomId}`);
+    const response = await fetch(`${CORS}${SUPERHERO_API}/${randomId}`);
     const data = await response.json();
     return { data };
   } catch (error) {
