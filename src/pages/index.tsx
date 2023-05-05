@@ -39,11 +39,13 @@ export default function Home({ data }: any) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Character[]>([]);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await getRandomCharacters() as { data: never[] };
       setResults(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -82,6 +84,10 @@ export default function Home({ data }: any) {
     getRandomCharacters().then((response: any) => {
       setResults(response.data);
     });
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
